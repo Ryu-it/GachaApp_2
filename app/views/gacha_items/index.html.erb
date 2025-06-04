@@ -1,0 +1,15 @@
+<div class="flex flex-wrap w-[1000px] mx-auto items-center">
+
+  <% @gacha_items.each do |item| %>
+    <div class="w-125 h-auto bg-blue-200 border p-25 mt-10">
+      <%= image_tag(item.image, class: "") %>
+      <div class="mt-5 font-bold text-xl">
+      <%= "#{item.name}"  %>
+      </div>
+      <div class="mt-5 border p-5 bg-black text-white font-bold">
+      <%= "#{item.body}" %>
+      </div>
+    </div>
+  <% end %>
+
+</div>

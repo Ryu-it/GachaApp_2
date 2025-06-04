@@ -1,0 +1,31 @@
+<div class="flex flex-col items-center justify-center">
+
+<div x-data="{ show: true }" x-init="setTimeout(() => show = false, 300)" class="relative">
+
+    <!-- 白いオーバーレイ -->
+  <div x-show="show"
+       x-transition.opacity.duration.2500ms
+       class="fixed inset-0 bg-[#fffbe6] z-50">
+   </div>
+
+  </div>
+
+    <div class=" bg-blue-200 border p-25 mt-30">
+    <%= image_tag(@gacha_item.image, class: "w-180 h-auto") %>
+    <div class="mt-5 font-bold text-xl">
+    <%= "#{@gacha_item.name}" %>
+    </div>
+    <div class="w-180 mt-5 border p-5 bg-black text-white font-bold">
+    <%= "#{@gacha_item.body}" %>
+    </div>
+</div>
+
+<% if current_user %>
+<%= link_to "自分の友達を見に行く", gacha_items_path, class: "mt-20 text-xl bg-black p-10 text-white hover:opacity-60 transition duration-300 rounded-lg" %>
+<% else %>
+<%= link_to "登録してコレクションにする", new_user_registration_path, class: "mt-20 text-xl bg-black p-10 text-white hover:opacity-60 transition duration-300 rounded-lg" %>
+<% end %>
+    
+  <%= link_to "Xでシェア", "https://twitter.com/intent/tweet?url=#{request.original_url}&text=#{@gacha_item.name}を引きました！次は誰に会えるんだろう？", target: "_blank", rel: "noopener", class: "mt-20 mb-10 text-xl bg-black p-10 text-white hover:opacity-60 transition duration-300 rounded-lg" %>
+
+</div>
