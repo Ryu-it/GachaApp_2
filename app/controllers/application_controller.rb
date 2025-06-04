@@ -11,13 +11,13 @@ class ApplicationController < ActionController::Base
       UserGacha.create(user: current_user, gacha_item_id: session[:pending_gacha_item_id])
       session.delete(:pending_gacha_item_id)
     end
-  
+
     super
   end
 
   private
 
   def configure_permitted_parameters
-    devise_parameter_sanitizer.permit(:sign_up, keys: [:nickname])
+  devise_parameter_sanitizer.permit(:sign_up, keys: [:nickname])
   end
 end
