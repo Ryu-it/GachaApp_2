@@ -1,5 +1,5 @@
 class GachaItemsController < ApplicationController
-before_action :authenticate_user!, only: [:index]
+  before_action :authenticate_user!, only: [:index]
 
   def new
   end
@@ -31,5 +31,4 @@ before_action :authenticate_user!, only: [:index]
   def index
     @gacha_items = current_user.gacha_items.distinct
   end
-
 end
