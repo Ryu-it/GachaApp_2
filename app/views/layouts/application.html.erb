@@ -21,7 +21,8 @@
   <body>
     <%= render 'shared/header' %>
 
-<div style="background-image: url(<%= asset_path('bg-pic.png') %>);" class="bg-cover">
+<div style="background-image: url('/bg-pic.png');" class="bg-cover">
+
 
 <% flash.each do |type, message| %>
   <div class="p-4 mb-4 rounded text-center <%= { success: 'bg-green-100', danger: 'bg-red-300' }[type.to_sym] %>">
