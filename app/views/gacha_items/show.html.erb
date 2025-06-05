@@ -26,6 +26,6 @@
 <%= link_to "登録してコレクションにする", new_user_registration_path, class: "mt-20 text-xl bg-black p-10 text-white hover:opacity-60 transition duration-300 rounded-lg" %>
 <% end %>
     
-  <%= link_to "Xでシェア", "https://twitter.com/intent/tweet?url=#{request.original_url}&text=#{@gacha_item.name}を引きました！次は誰に会えるんだろう？", target: "_blank", rel: "noopener", class: "mt-20 mb-10 text-xl bg-black p-10 text-white hover:opacity-60 transition duration-300 rounded-lg" %>
+  <%= link_to "Xでシェア", "https://twitter.com/intent/tweet?url=#{CGI.escape('https://gachaapp-2.onrender.com')}&text=#{CGI.escape("#{@gacha_item.name}を引きました！次は誰に会えるんだろう？")}", target: "_blank", rel: "noopener", class: "mt-20 mb-10 text-xl bg-black p-10 text-white hover:opacity-60 transition duration-300 rounded-lg" %>
 
 </div>
