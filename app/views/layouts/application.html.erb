@@ -21,6 +21,14 @@
 
 <div style="background-image: url('/bg-pic.png');" class="bg-cover">
 
+  <% if Rails.env.production? %>
+  <div style="position: fixed; bottom: 0; left: 0; background: lightyellow; padding: 5px; font-size: small;">
+    CSS: <%= File.exist?(Rails.root.join("public/assets/application.css")) ? "✅ Found" : "❌ Missing" %><br>
+    JS: <%= File.exist?(Rails.root.join("public/assets/application.js")) ? "✅ Found" : "❌ Missing" %>
+  </div>
+<% end %>
+
+
 
 <% flash.each do |type, message| %>
   <div class="p-4 mb-4 rounded text-center <%= { success: 'bg-green-100', danger: 'bg-red-300' }[type.to_sym] %>">
