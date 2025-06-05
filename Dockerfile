@@ -62,7 +62,8 @@ RUN SECRET_KEY_BASE_DUMMY=1 ./bin/rails assets:precompile
 
 RUN mkdir -p public/assets && \
     cp app/assets/builds/application.css public/assets/application.css && \
-    cp app/assets/builds/application.js public/assets/application.js
+    cp app/assets/builds/application.js public/assets/application.js \
+    ls -l public/assets
 
 RUN rm -rf node_modules
 
