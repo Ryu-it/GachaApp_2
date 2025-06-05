@@ -60,11 +60,11 @@ RUN yarn build:css
 # Precompiling assets for production without requiring secret RAILS_MASTER_KEY
 RUN SECRET_KEY_BASE_DUMMY=1 ./bin/rails assets:precompile
 
-RUN mkdir -p public/assets && \
-    cp app/assets/builds/application.css public/assets/application.css && \
-    cp app/assets/builds/application.js public/assets/application.js && \
-    ls -l public/assets && \
-    echo "==============================="
+
+RUN mkdir -p public/assets/builds && \
+    cp app/assets/builds/application.css public/assets/builds/application.css && \
+    cp app/assets/builds/application.js public/assets/builds/application.js && \
+    ls -l public/assets/builds
 
 
 RUN rm -rf node_modules
