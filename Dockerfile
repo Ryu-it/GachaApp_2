@@ -55,20 +55,11 @@ COPY . .
 # Precompile bootsnap code for faster boot times
 RUN bundle exec bootsnap precompile app/ lib/
 
-RUN yarn build:css
 
 # Precompiling assets for production without requiring secret RAILS_MASTER_KEY
 RUN SECRET_KEY_BASE_DUMMY=1 ./bin/rails assets:precompile
 
-
-RUN mkdir -p public/assets/builds && \
-    cp app/assets/builds/application.css public/assets/builds/application.css && \
-    cp app/assets/builds/application.js public/assets/builds/application.js && \
-    ls -l public/assets/builds
-
-
 RUN rm -rf node_modules
-
 
 # Final stage for app image
 FROM base
@@ -76,7 +67,6 @@ FROM base
 # Copy built artifacts: gems, application
 COPY --from=build "${BUNDLE_PATH}" "${BUNDLE_PATH}"
 COPY --from=build /rails /rails
-COPY --from=build /rails/public /rails/public
 
 # Run and own only the runtime files as a non-root user for security
 RUN groupadd --system --gid 1000 rails && \
@@ -90,4 +80,3 @@ ENTRYPOINT ["/rails/bin/docker-entrypoint"]
 # Start the server by default, this can be overwritten at runtime
 EXPOSE 3000
 CMD ["./bin/rails", "server"]
-

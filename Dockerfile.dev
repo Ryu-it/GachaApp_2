@@ -14,5 +14,3 @@ RUN mkdir /myapp
 WORKDIR /myapp
 RUN gem install bundler
 COPY . /myapp
-RUN bundle install
-CMD ["bundle", "exec", "rails", "server", "-e", "production", "-b", "0.0.0.0"]
