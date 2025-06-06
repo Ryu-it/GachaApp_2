@@ -2,7 +2,7 @@
 
   <% @gacha_items.each do |item| %>
     <div class="w-125 h-auto bg-blue-200 border p-25 mt-10">
-      <%= image_tag(item.image, class: "") %>
+      <%= image_tag("/images/#{item.gacha_image}", class: "") if item.gacha_image.present? %>
       <div class="mt-5 font-bold text-xl">
       <%= "#{item.name}"  %>
       </div>

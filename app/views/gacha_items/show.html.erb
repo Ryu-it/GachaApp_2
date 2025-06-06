@@ -11,7 +11,7 @@
   </div>
 
     <div class=" bg-blue-200 border p-25 mt-30">
-    <%= image_tag(@gacha_item.image, class: "w-180 h-auto") %>
+    <%= image_tag("/images/#{@gacha_item.gacha_image}", class: "w-180 h-auto") if @gacha_item.gacha_image.present? %>
     <div class="mt-5 font-bold text-xl">
     <%= "#{@gacha_item.name}" %>
     </div>
